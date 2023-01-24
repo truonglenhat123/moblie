@@ -7,4 +7,5 @@ export const Colors = {
     backgroundLight: '#F0F0F3',
     backgroundMedium: '#B9B9B9',
     backgroundDark: '#777777',
+    subScreen :'#CCFF99'
   };

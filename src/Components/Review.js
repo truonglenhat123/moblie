@@ -15,6 +15,9 @@ import Message from "./Notification/Message";
 
 const Review = () => {
   const [rating, setRating] = useState("");
+  const handelSubmitComment= ()=>{
+    alert("aaa")
+  }
   return (
     <Box my={9}>
       <Heading bold fontSize={15} mb={2}>
@@ -102,7 +105,7 @@ const Review = () => {
               }}
             ></TextArea>
           </FormControl>
-          <Button bg={Colors.green} color={Colors.white}>
+          <Button bg={Colors.green} color={Colors.white} onPress={handelSubmitComment}>
               Hoàn tất
           </Button>
         </VStack>
