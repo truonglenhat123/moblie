@@ -5,22 +5,25 @@ import { Colors } from "../Color";
 import OrderInfo from "../Components/OrderInfo";
 import { FontAwesome, FontAwesome5, Entypo } from "@expo/vector-icons";
 import OrderItems from "../Components/OrderItems";
-import PlaceOrderModel from "../Components/PlaceOrderModel";
+import OrderModel from "../Components/PlaceOrderModel";
 const Order = () => {
   return (
     <Box bg={Colors.subScreen} flex={1} safeArea pt={6}>
       <Box>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <OrderInfo
+          {/* <OrderInfo
             title="Khách hàng"
+            success={}
             subTitle="Admin"
             text="admin@gmail.com"
             icon={<FontAwesome name="user" size={30} color={Colors.white} />}
-          />
+          /> */}
           <OrderInfo
             title="Thoong tin dat ahng"
             subTitle="van chuyen:truong dz"
             text="Che do thanh toan: paypal"
+            success
+            color="white"
             icon={
               <FontAwesome5
                 name="shipping-fast"
@@ -30,6 +33,7 @@ const Order = () => {
             }
           />
           <OrderInfo
+          danger
             title="Thoong tin van chuyen"
             subTitle="Địa chỉ:"
             text="sai gon , cali"
@@ -41,7 +45,7 @@ const Order = () => {
         <Heading bold fontSize={20} isTruncated my={4}>Sanr Pham</Heading>
         <OrderItems/>
         {/* tong cong  */}
-        <PlaceOrderModel/>
+        <OrderModel/>
       </Box>
     </Box>
   );

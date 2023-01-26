@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Button, Center, HStack, Modal, VStack, Text } from "native-base";
+import {
+  Button,
+  Center,
+  HStack,
+  Modal,
+  VStack,
+  Text,
+  Pressable,
+  Image,
+} from "native-base";
 import { Colors } from "../Color";
 
 const orderInfos = [
@@ -24,13 +33,13 @@ const orderInfos = [
     color: "green",
   },
 ];
-const PlaceOrderModel = () => {
+const OrderModel = () => {
   const [showModel, setShowModel] = useState(false);
   return (
     <Center>
       <Button
         onPress={() => setShowModel(true)}
-        bg={Colors.black}
+        bg={Colors.green}
         color={Colors.white}
         mt={5}
         w="300px"
@@ -72,11 +81,13 @@ const PlaceOrderModel = () => {
               _text={{
                 color: Colors.white,
               }}
-              onPress={() =>setShowModel(false)}
+              onPress={() => setShowModel(false)}
               _pressed={{
-                bg:Colors.green,
+                bg: Colors.green,
               }}
-            >Dat hang ngay</Button>
+            >
+              Dat hang ngay
+            </Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
@@ -84,4 +95,4 @@ const PlaceOrderModel = () => {
   );
 };
 
-export default PlaceOrderModel;
+export default OrderModel;
