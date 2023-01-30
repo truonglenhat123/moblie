@@ -5,6 +5,7 @@ import HomeScreen from "../Screens/HomeScreen";
 import ProductDetailScreen from "../Screens/ProductDetailScreen";
 import Order from "../Screens/Order";
 import HomeBoard from "../Screens/HomeBoard";
+import SettingScreen from "../Screens/SettingScreen";
 
 
 
@@ -21,6 +22,7 @@ const StackNav = () => {
       <Stack.Screen name="HomeBoard" component={HomeBoard} />
       <Stack.Screen name="Single" component={ProductDetailScreen} />
       <Stack.Screen name="Checkout" component={Order} />
+      <Stack.Screen name="Setting" component={SettingScreen} />
     </Stack.Navigator>
   );
 };

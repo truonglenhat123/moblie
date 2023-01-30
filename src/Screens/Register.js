@@ -1,11 +1,40 @@
 import { View, Text, Pressable } from "react-native";
 import React from "react";
-import { Box, Button, Heading, Image, Input, VStack } from "native-base";
+import {
+  Box,
+  Button,
+  Heading,
+  Image,
+  Input,
+  Spinner,
+  VStack,
+  Stack,
+  HStack,
+  IconButton,
+  CloseIcon,
+  Center,
+} from "native-base";
 import { Colors } from "../Color";
 import { MaterialIcons, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { Alert } from "native-base";
 
 const Register = () => {
+  const navigation = useNavigation();
+ 
+  
+  const HandelRegister = (text) => {
+   if(text.leng <3)
+   {
+      alert("ban can nhap du 3 ki tu");
+   }
+   else{
+    alert("dang nhap thjanh co ng");
+   }
+   
+    navigation.navigate("Login");
+  };
   return (
     <Box flex={1} bg={Colors.black}>
       <Image
@@ -76,10 +105,16 @@ const Register = () => {
           w="40%"
           rounded={50}
           bg={Colors.backgroundDark}
+          onPress={HandelRegister}
         >
           Đăng Kí
         </Button>
-        <Pressable mt={4}>
+        <Pressable
+          mt={4}
+          onPress={() => {
+            navigation.navigate("Cart");
+          }}
+        >
           <Text color={Colors.backgroundDark} fontSize="20px">
             Đăng Nhập
           </Text>

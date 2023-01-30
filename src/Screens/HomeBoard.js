@@ -9,6 +9,7 @@ import {
   Image,
   Box,
   Heading,
+  Button,
 } from "native-base";
 import { TouchableOpacity } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -138,7 +139,9 @@ const HomeBoard = () => {
                 fontSize: 14,
                 color: Colors.blue,
                 fontWeight: "400",
+                
               }}
+              onPress={()=> navigation.navigate('Home')}
             >
               Xem thêm
             </Text>
@@ -229,6 +232,7 @@ const HomeBoard = () => {
                 color: Colors.blue,
                 fontWeight: "400",
               }}
+              onPress={()=> navigation.navigate('Home')}
             >
               Xem thêm
             </Text>
@@ -318,6 +322,7 @@ const HomeBoard = () => {
                 color: Colors.blue,
                 fontWeight: "400",
               }}
+              onPress={()=> navigation.navigate('Home')}
             >
               Xem thêm
             </Text>
@@ -407,6 +412,7 @@ const HomeBoard = () => {
                 color: Colors.blue,
                 fontWeight: "400",
               }}
+              onPress={()=> navigation.navigate('Home')}
             >
               Xem thêm
             </Text>

@@ -14,6 +14,7 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import HomeScreen from "../Screens/HomeScreen";
+import SettingScreen from "../Screens/SettingScreen";
 
 const Tab = createBottomTabNavigator();
 const CustomTab = ({ children, onPress }) => (
@@ -125,7 +126,7 @@ const BottomNav = () => {
       />
       <Tab.Screen
         name="Setting"
-        component={ProfileScreen}
+        component={SettingScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <Center>

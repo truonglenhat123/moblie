@@ -66,7 +66,7 @@ const Login = ({ navigation }) => {
         >
           Đăng nhập
         </Button>
-        <Pressable mt={4}  onPress={()=>navigation.navigate('Bottom')}>
+        <Pressable mt={4}  onPress={()=>navigation.navigate('Register')}>
           <Text color={Colors.backgroundDark} fontSize="20px">
             Đăng kí
           </Text>
