@@ -13,6 +13,7 @@ import {
   FontAwesome5,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import HomeScreen from "../Screens/HomeScreen";
 
 const Tab = createBottomTabNavigator();
 const CustomTab = ({ children, onPress }) => (
@@ -60,6 +61,25 @@ const BottomNav = () => {
           ),
         }}
       />
+       <Tab.Screen
+        name="Shop"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Center>
+              {focused ? (
+                <Entypo name="shop" size={24} color={Colors.greenss} />
+              ) : (
+                <FontAwesome5
+                  name="shopping-bag"
+                  size={24}
+                  color={Colors.backgroundDark}
+                />
+              )}
+            </Center>
+          ),
+        }}
+      />
       <Tab.Screen
         name="Cart"
         component={CartScreen}
@@ -95,6 +115,25 @@ const BottomNav = () => {
               ) : (
                 <FontAwesome5
                   name="user"
+                  size={24}
+                  color={Colors.backgroundDark}
+                />
+              )}
+            </Center>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Setting"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Center>
+              {focused ? (
+                <AntDesign name="setting" size={24} color={Colors.greenss} />
+              ) : (
+                <AntDesign
+                  name="setting"
                   size={24}
                   color={Colors.backgroundDark}
                 />

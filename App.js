@@ -5,6 +5,8 @@ import Register from "./src/Screens/Register";
 import Order from "./src/Screens/Order";
 import BottomNav from "./src/Navigation/BottomNav";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeBoard from "./src/Screens/HomeBoard";
+import CartScreen from "./src/Screens/CartScreen";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -19,8 +21,10 @@ export default function App() {
           }}
         >
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="HomeBoard" component={HomeBoard} />
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Order" component={Order} />
+          <Stack.Screen name="Cart" component={CartScreen} />
           <Stack.Screen name="Bottom" component={BottomNav} />
         </Stack.Navigator>
       </NavigationContainer>

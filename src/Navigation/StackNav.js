@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../Screens/HomeScreen";
 import ProductDetailScreen from "../Screens/ProductDetailScreen";
 import Order from "../Screens/Order";
+import HomeBoard from "../Screens/HomeBoard";
 
 
 
@@ -11,12 +12,13 @@ const Stack = createNativeStackNavigator();
 const StackNav = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeBoard"
       screenOptions={{
         headerShown: false,
       }}
     >
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="HomeBoard" component={HomeBoard} />
       <Stack.Screen name="Single" component={ProductDetailScreen} />
       <Stack.Screen name="Checkout" component={Order} />
     </Stack.Navigator>
