@@ -105,7 +105,7 @@ const Review = () => {
               }}
             ></TextArea>
           </FormControl>
-          <Button bg={Colors.green} color={Colors.white} onPress={handelSubmitComment}>
+          <Button bg={Colors.greenss} color={Colors.white} onPress={handelSubmitComment}>
               Hoàn tất
           </Button>
         </VStack>

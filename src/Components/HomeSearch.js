@@ -3,8 +3,10 @@ import React from "react";
 import { HStack, Input,Box } from "native-base";
 import { Colors } from "../Color";
 import {  FontAwesome5 } from "@expo/vector-icons";
+import {useNavigation} from '@react-navigation/native'
 
 const HomeSearch = () => {
+  const navigation = useNavigation();
   return (
     <HStack
       space={3}
@@ -27,7 +29,7 @@ const HomeSearch = () => {
         }}
         variant="filled"
       />
-      <Pressable ml={3}>
+      <Pressable ml={3} onPress={()=> navigation.navigate('Cart')}>
       <FontAwesome5 name="shopping-cart" size={30} color={Colors.white} />
       <Box px={1} rounded="full" position="absolute" top={-13} left={7} bg={Colors.red} _text={{
         color:Colors.white ,fontSize:"11px",

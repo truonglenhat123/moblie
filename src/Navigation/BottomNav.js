@@ -21,7 +21,7 @@ const CustomTab = ({ children, onPress }) => (
     h={70}
     w={70}
     rounded="full"
-    bg={Colors.green}
+    bg={Colors.greenss}
     top={-30}
     shadow={2}
   >
@@ -48,7 +48,7 @@ const BottomNav = () => {
           tabBarIcon: ({ focused }) => (
             <Center>
               {focused ? (
-                <Entypo name="home" size={24} color={Colors.green} />
+                <Entypo name="home" size={24} color={Colors.greenss} />
               ) : (
                 <AntDesign
                   name="home"
@@ -91,7 +91,7 @@ const BottomNav = () => {
           tabBarIcon: ({ focused }) => (
             <Center>
               {focused ? (
-                <FontAwesome5 name="user" size={24} color={Colors.green} />
+                <FontAwesome5 name="user" size={24} color={Colors.greenss} />
               ) : (
                 <FontAwesome5
                   name="user"

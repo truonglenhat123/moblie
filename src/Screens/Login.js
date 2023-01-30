@@ -5,7 +5,7 @@ import { Colors } from "../Color";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <Box flex={1} bg={Colors.black}>
       <Image
@@ -55,15 +55,21 @@ const Login = () => {
           ></Input>
         </VStack>
         <Button
-        _pressed={{
-          bg:Colors.red
-        }}
-         my={30} w="40%" rounded={50} bg={Colors.backgroundDark}
-         >
+          _pressed={{
+            bg: Colors.red,
+          }}
+          my={30}
+          w="40%"
+          rounded={50}
+          bg={Colors.backgroundDark}
+          onPress={()=>navigation.navigate('Bottom')}
+        >
           Đăng nhập
         </Button>
-        <Pressable mt={4}>
-          <Text color={Colors.backgroundDark} fontSize="20px">Đăng kí</Text>
+        <Pressable mt={4}  onPress={()=>navigation.navigate('Bottom')}>
+          <Text color={Colors.backgroundDark} fontSize="20px">
+            Đăng kí
+          </Text>
         </Pressable>
       </Box>
     </Box>
