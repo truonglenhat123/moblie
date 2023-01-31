@@ -17,8 +17,8 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import products from "../data/products";
 import { useNavigation } from "@react-navigation/native";
 
-const HomeBoard = () => {
-  const navigation = useNavigation();
+const HomeBoard = ({ navigation }) => {
+  // const navigation = useNavigation();
   return (
     <View
       style={{

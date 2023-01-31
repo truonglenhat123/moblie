@@ -8,5 +8,6 @@ export const Colors = {
     backgroundMedium: '#B9B9B9',
     backgroundDark: '#777777',
     subScreen :'#CCFF99',
-    greenss:'#28B463'
+    greenss:'#28B463',
+    cam:'#FFA500'
   };
