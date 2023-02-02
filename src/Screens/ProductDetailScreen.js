@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   Box,
   Button,
@@ -15,6 +15,10 @@ import Review from "../Components/Review";
 import { useNavigation } from "@react-navigation/native";
 
 const ProductDetailScreen = ({ route }) => {
+  
+
+
+ 
   const [value, setValue] = useState(0);
   const navigation = useNavigation();
   const product = route.params;
@@ -22,7 +26,7 @@ const ProductDetailScreen = ({ route }) => {
     <Box safeArea flex={1} bg={Colors.white}>
       <ScrollView px={5} showsVerticalScrollIndicator={false}>
         <Image
-          source={{ uri: product.productImage }}
+          source={{ uri: `http://192.168.1.250:8083/image/Asset/${product.image}` }}
           alt="Image"
           w="full"
           h={300}
@@ -49,7 +53,7 @@ const ProductDetailScreen = ({ route }) => {
           />
           <Spacer />
           <Heading bold color={Colors.black} fontSize={30}>
-            đ {product.productPrice}
+            đ {product.newPrice}
           </Heading>
           <HStack></HStack>
         </HStack>

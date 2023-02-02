@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -12,46 +12,80 @@ import {
 } from "native-base";
 import { Colors } from "../Color";
 import Message from "./Notification/Message";
+import { ActivityIndicator } from "react-native";
 
 const Review = () => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [checkIsComment, setCheckIsComment] = useState(false);
   const [rating, setRating] = useState("");
-  const handelSubmitComment= ()=>{
-    alert("aaa")
-  }
-  return (
-    <Box my={9}>
-      <Heading bold fontSize={15} mb={2}>
-        Đánh giá
-      </Heading>
-
-      {/* không có review  */}
-      {/* <Message
+  useEffect(() => {
+    getComment();
+    return () => {};
+  });
+  const getComment = () => {
+    const apiURL = "http://192.168.1.250:81/api/Comment";
+    fetch(apiURL)
+      .then((res) => res.json())
+      .then((resJson) => {
+        setData(resJson);
+        setCheckIsComment(true);
+        // console.log("data", data);
+      })
+      .catch((error) => {
+        console.log("errorr", error);
+      })
+      .finally(() => setIsLoading(false));
+  };
+  const handelSubmitComment = () => {
+    alert("aaa");
+  };
+  const renderComment = () => {
+    return (
+      <>
+        {data.map((products) => (
+          <Box p={5} bg={Colors.green} mt={5} rounded={5} key={products.productId}>
+            <>
+              <Heading fontSize={15} color={Colors.black} p={1}>
+                {products.name}
+              </Heading>
+              <Text my={3} fontSize={11} p={1}>
+                {products.createAt}
+              </Text>
+              <Message
+                bold
+                mt={3}
+                color={Colors.black}
+                bg={Colors.white}
+                size={10}
+                children={`${products.content}`}
+              />
+            </>
+          </Box>
+        ))}
+      </>
+    );
+  };
+  const noComment = () => {
+    return (
+      <Message
         mt={3}
         color={Colors.green}
         bg={Colors.backgroundDark}
         size={10}
         bold
         children={"Không có đánh giá nào"}
-      /> */}
-      {/* có  review  */}
-      <Box p={5} bg={Colors.green} mt={5} rounded={5}>
-        <Heading fontSize={15} color={Colors.black} p={1}>
-          Truowjngf dz
-        </Heading>
-        <Text my={3} fontSize={11} p={1}>
-          jan 12 2022
-        </Text>
-        <Message
-          bold
-          mt={3}
-          color={Colors.black}
-          bg={Colors.white}
-          size={10}
-          children={
-            "A caveat is that videos must use absolute positioning instead of flexGrow, since size info is not currently passed for non-image assets. This limitation doesn't occur for videos that are linked directly into Xcode or the Assets folder for Android."
-          }
-        />
-      </Box>
+      />
+    );
+  };
+  return (
+    <Box my={9}>
+      <Heading bold fontSize={15} mb={2}>
+        Đánh giá
+      </Heading>
+
+     
+      {checkIsComment ? renderComment() : noComment()}
       {/* viết đánh giá  */}
       <Box mt={6}>
         <Heading fontSize={15} color={Colors.black} bm={5} bold>
@@ -100,13 +134,17 @@ const Review = () => {
               bg={Colors.backgroundLight}
               py={4}
               _focus={{
-                bg:Colors.backgroundMedium,
-                color:Colors.red
+                bg: Colors.backgroundMedium,
+                color: Colors.red,
               }}
             ></TextArea>
           </FormControl>
-          <Button bg={Colors.greenss} color={Colors.white} onPress={handelSubmitComment}>
-              Hoàn tất
+          <Button
+            bg={Colors.greenss}
+            color={Colors.white}
+            onPress={handelSubmitComment}
+          >
+            Hoàn tất
           </Button>
         </VStack>
       </Box>
