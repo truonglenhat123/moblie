@@ -1,5 +1,5 @@
-import { View, Text } from "react-native";
-import React, { useState,useEffect } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -14,29 +14,33 @@ import NumericInput from "react-native-numeric-input";
 import Review from "../Components/Review";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, selectCartItems, selectCartItemWithId,removeFromCart } from "../../features/cartSlice";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const ProductDetailScreen = ({ route }) => {
-  
-
-
- 
+const ProductDetailScreen = ({ route, navigation }) => {
   const [value, setValue] = useState(0);
   const product = route.params;
   const dispatch = useDispatch();
-  const items = useSelector((state)=>selectCartItemWithId(state,route.id))
-  const addItemToCart=() =>{
-    dispatch(addToCart({id,productName,newPrice,image}));
-  }
-  const removeItemFromCart = ()=>{
-    if(!items.length > 0) return;
-    dispatch(removeFromCart({id}))
-  }
+
+  const goBack = () => {
+    navigation.goBack(null);
+  };
   return (
     <Box safeArea flex={1} bg={Colors.white}>
+      <View style={style.header}>
+        <MaterialIcons
+          name="arrow-back-ios"
+          size={28}
+          onPress={() => goBack()}
+        />
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          Chi tiết sản phẩm
+        </Text>
+      </View>
       <ScrollView px={5} showsVerticalScrollIndicator={false}>
         <Image
-          source={{ uri: `http://192.168.1.50:8083/image/Asset/${product.image}` }}
+          source={{
+            uri: `http://103.116.107.230:8081/image/Asset/${product.image}`,
+          }}
           alt="Image"
           w="full"
           h={300}
@@ -60,6 +64,7 @@ const ProductDetailScreen = ({ route }) => {
             iconStyle={{ color: Colors.white }}
             rightButtonBackgroundColor={Colors.greenss}
             leftButtonBackgroundColor={Colors.greenss}
+            onChange={(value) => setValue(value)}
           />
           <Spacer />
           <Heading bold color={Colors.black} fontSize={30}>
@@ -68,7 +73,7 @@ const ProductDetailScreen = ({ route }) => {
           <HStack></HStack>
         </HStack>
         <Text lineHeight={30} fontSize={30}>
-          {product.description}
+          {product.descriptionshort}
         </Text>
         <Button
           bg={Colors.greenss}
@@ -77,7 +82,6 @@ const ProductDetailScreen = ({ route }) => {
           borderRadius={30}
           height={60}
           fontSize={50}
-          onPress={addItemToCart}
         >
           Thêm vào giỏ hàng
         </Button>
@@ -87,5 +91,14 @@ const ProductDetailScreen = ({ route }) => {
     </Box>
   );
 };
+
+const style = StyleSheet.create({
+  header: {
+    paddingVertical: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 20,
+  },
+});
 
 export default ProductDetailScreen;
