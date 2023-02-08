@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import StackNav from "../Navigation/StackNav";
 import ProfileScreen from "../Screens/ProfileScreen";
 import CartScreen from "../Screens/CartScreen";
 import { Center, Pressable } from "native-base";
@@ -15,6 +14,7 @@ import {
 } from "@expo/vector-icons";
 import HomeScreen from "../Screens/HomeScreen";
 import SettingScreen from "../Screens/SettingScreen";
+import HomeBoard from "../Screens/HomeBoard";
 
 const Tab = createBottomTabNavigator();
 const CustomTab = ({ children, onPress }) => (
@@ -44,8 +44,8 @@ const BottomNav = () => {
       }}
     >
       <Tab.Screen
-        name="Main"
-        component={StackNav}
+        name="Home"
+        component={HomeBoard}
         options={{
           tabBarIcon: ({ focused }) => (
             <Center>
@@ -62,7 +62,7 @@ const BottomNav = () => {
           ),
         }}
       />
-       <Tab.Screen
+      <Tab.Screen
         name="Shop"
         component={HomeScreen}
         options={{

@@ -7,6 +7,8 @@ import {
   Box,
   Text,
   Image,
+  View,
+  Center,
 } from "native-base";
 // import { Image } from "react-native";
 import { Colors } from "../Color";
@@ -25,17 +27,16 @@ function HomeProduct() {
     return () => {};
   });
   const getListProduct = () => {
-    const apiURL = "http://192.168.1.250:8083/api/Product";
+    const apiURL = "http://103.116.107.230:8081/api/product";
     fetch(apiURL)
       .then((res) => res.json())
       .then((resJson) => {
         setData(resJson);
       })
-      .catch((error) => {
-        console.log("error", error);
-      })
+      .catch((error) => {})
       .finally(() => setIsLoading(false));
   };
+
   const renderItem = () => {
     return (
       <Flex
@@ -44,7 +45,7 @@ function HomeProduct() {
         justifyContent="space-between"
         px={6}
       >
-        {data.slice(0, 10).map((product) => (
+        {data.map((product) => (
           <Pressable
             onPress={() => navigation.navigate("Single", product)}
             key={product.id}
@@ -58,7 +59,9 @@ function HomeProduct() {
             overflow="hidden"
           >
             <Image
-              source={{ uri: `http://192.168.1.250:8083/image/Asset/${product.image}` }}
+              source={{
+                uri: `http://103.116.107.230:8081/image/Asset/${product.image}`,
+              }}
               alt={product.productName}
               w="full"
               h={24}

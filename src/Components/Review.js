@@ -24,7 +24,7 @@ const Review = () => {
     return () => {};
   });
   const getComment = () => {
-    const apiURL = "http://192.168.1.250:81/api/Comment";
+    const apiURL = "http://192.168.1.50:8083/api/Comment";
     fetch(apiURL)
       .then((res) => res.json())
       .then((resJson) => {

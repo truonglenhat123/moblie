@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Colors } from "../Color";
 import {
   ScrollView,
@@ -15,10 +15,25 @@ import { TouchableOpacity } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import products from "../data/products";
-import { useNavigation } from "@react-navigation/native";
 
 const HomeBoard = ({ navigation }) => {
-  // const navigation = useNavigation();
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    getListProduct();
+    alert("aaaa");
+  }, []);
+  const getListProduct = () => {
+    const apiURL = "http://103.116.107.230:8081/api/product/product/branch";
+    fetch(apiURL)
+      .then((res) => res.json())
+      .then((resJson) => {
+        setData(resJson);
+        // console.log("====================================");
+        console.log(resJson[0]);
+        // console.log("====================================");
+      })
+      .catch((error) => {});
+  };
   return (
     <View
       style={{
@@ -94,99 +109,106 @@ const HomeBoard = ({ navigation }) => {
             {"\n"}Cửa hàng này bao uy tín nha
           </Text>
         </View>
-        <View
-          style={{
-            padding: 16,
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
+
+        {data &&
+          data.map((product) => (
             <View
               style={{
-                flexDirection: "row",
-                alignItems: "center",
+                padding: 16,
               }}
             >
-              <Text
+              <View
                 style={{
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: "500",
-                  letterSpacing: 1,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
                 }}
               >
-                 IPHONE
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: "400",
-                  opacity: 0.5,
-                  marginLeft: 10,
-                }}
-              >
-                41
-              </Text>
-            </View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: Colors.blue,
-                fontWeight: "400",
-                
-              }}
-              onPress={()=> navigation.navigate('Home')}
-            >
-              Xem thêm
-            </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "space-around",
-            }}
-          >
-            {products.slice(0,4).map((product) => (
-              <Pressable
-                onPress={() => navigation.navigate("Single", product)}
-                key={product.id}
-                w="47%"
-                bg={Colors.white}
-                rounded="md"
-                shadow={2}
-                pt={0.3}
-                my={3}
-                pb={2}
-                overflow="hidden"
-              >
-                <Image
-                  source={{ uri: product.productImage }}
-                  alt={product.productName}
-                  w="full"
-                  h={24}
-                  resizeMode="contain"
-                />
-                <Box px={4} pt={1}>
-                  <Heading size="sm" bold>
-                    đ{product.productPrice}
-                  </Heading>
-                  <Text fontSize={15} mt={1} isTruncated w="full">
-                    {product.productName}
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: "500",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    {Object.keys(product)[0]}
                   </Text>
-                </Box>
-              </Pressable>
-            ))}
-          </View>
-        </View>
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: "400",
+                      opacity: 0.5,
+                      marginLeft: 10,
+                    }}
+                  >
+                    {Object.values(product)[0] &&
+                      Object.values(product)[0].length}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: Colors.blue,
+                    fontWeight: "400",
+                  }}
+                  onPress={() => navigation.navigate("Home")}
+                >
+                  Xem thêm
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  justifyContent: "space-around",
+                }}
+              >
+                {Object.values(product)[0] &&
+                  Object.values(product)[0].slice(0,4).map((productD) => (
+                    <Pressable
+                      onPress={() => navigation.navigate("Single", productD)}
+                      key={productD.id}
+                      w="47%"
+                      bg={Colors.white}
+                      rounded="md"
+                      shadow={2}
+                      pt={0.3}
+                      my={3}
+                      pb={2}
+                      overflow="hidden"
+                    >
+                      <Image
+                        source={{
+                          uri: `http://192.168.1.50:8083/image/Asset/${productD.image}`,
+                        }}
+                        alt={productD.productName}
+                        w="full"
+                        h={24}
+                        resizeMode="contain"
+                      />
+                      <Box px={4} pt={1}>
+                        <Heading size="sm" bold>
+                          đ{productD.newPrice}
+                        </Heading>
+                        <Text fontSize={15} mt={1} isTruncated w="full">
+                          {productD.productName}
+                        </Text>
+                      </Box>
+                    </Pressable>
+                  ))}
+              </View>
+            </View>
+          ))}
 
-        <View
+        {/* <View
           style={{
             padding: 16,
           }}
@@ -455,7 +477,7 @@ const HomeBoard = ({ navigation }) => {
               </Pressable>
             ))}
           </View>
-        </View>
+        </View> */}
       </ScrollView>
     </View>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Center, ScrollView, Text, useTheme, View } from "native-base";
+import { Box, Button, Text, View } from "native-base";
 import { Colors } from "../Color";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";

@@ -1,5 +1,6 @@
 import { Box, Button, FormControl, Input, ScrollView, VStack } from "native-base";
 import React from "react";
+import { useState } from "react";
 import { Colors } from "../../Color";
 
 const Inputs = [
@@ -22,6 +23,10 @@ const Inputs = [
 ];
 
 const ProfileComponents = () => {
+  const [isDisabled,setIsDisabled] = useState(true);
+  const handelEditProfile = ()=>{
+    setIsDisabled(false);
+  }
   return (
     <Box h="full" bg={Colors.white} px={5}>
       <ScrollView showsHorizontalScrollIndicator={false}>
@@ -32,6 +37,7 @@ const ProfileComponents = () => {
                 _text={{
                   fontSize: "12px",
                   fontWeight: "bold",
+                  
                 }}
               >
                 {i.label}
@@ -48,11 +54,14 @@ const ProfileComponents = () => {
                   bg: Colors.subScreen,
                   borderColor: Colors.green,
                   borderWidth: 1,
+                  color: Colors.black
+                  
                 }}
+                isDisabled={isDisabled}
               />
             </FormControl>
           ))}
-          <Button bg={Colors.blue} color={Colors.white} borderRadius={10}>Cập nhật trang cá nhân</Button>
+          <Button onPress={handelEditProfile} bg={Colors.blue} color={Colors.white} borderRadius={10}>Cập nhật trang cá nhân</Button>
         </VStack>
       </ScrollView>
     </Box>

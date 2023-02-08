@@ -13,6 +13,8 @@ import { Colors } from "../Color";
 import NumericInput from "react-native-numeric-input";
 import Review from "../Components/Review";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, selectCartItems, selectCartItemWithId,removeFromCart } from "../../features/cartSlice";
 
 const ProductDetailScreen = ({ route }) => {
   
@@ -20,13 +22,21 @@ const ProductDetailScreen = ({ route }) => {
 
  
   const [value, setValue] = useState(0);
-  const navigation = useNavigation();
   const product = route.params;
+  const dispatch = useDispatch();
+  const items = useSelector((state)=>selectCartItemWithId(state,route.id))
+  const addItemToCart=() =>{
+    dispatch(addToCart({id,productName,newPrice,image}));
+  }
+  const removeItemFromCart = ()=>{
+    if(!items.length > 0) return;
+    dispatch(removeFromCart({id}))
+  }
   return (
     <Box safeArea flex={1} bg={Colors.white}>
       <ScrollView px={5} showsVerticalScrollIndicator={false}>
         <Image
-          source={{ uri: `http://192.168.1.250:8083/image/Asset/${product.image}` }}
+          source={{ uri: `http://192.168.1.50:8083/image/Asset/${product.image}` }}
           alt="Image"
           w="full"
           h={300}
@@ -67,9 +77,7 @@ const ProductDetailScreen = ({ route }) => {
           borderRadius={30}
           height={60}
           fontSize={50}
-          onPress={() => {
-            navigation.navigate("Cart");
-          }}
+          onPress={addItemToCart}
         >
           Thêm vào giỏ hàng
         </Button>
