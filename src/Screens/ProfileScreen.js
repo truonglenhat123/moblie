@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -15,6 +15,7 @@ import {
 import { Colors } from "../Color";
 import Tab from "../Components/Profile/Tab";
 import ProfileComponents from "../Components/Profile/ProfileComponents";
+import {AsyncStorage} from 'react-native';
 
 const ProfileScreen = ({ navigation }) => {
   const Inputs = [
@@ -35,6 +36,10 @@ const ProfileScreen = ({ navigation }) => {
       type: "password",
     },
   ];
+  const [email,setEmail] = useState(AsyncStorage.getItem('email'))
+  useEffect(()=>{
+      console.log(email);
+  },[email])
 
   return (
     <ScrollView>
@@ -42,7 +47,7 @@ const ProfileScreen = ({ navigation }) => {
         <Center bg={Colors.white} pt={10} pb={6}>
           <Image
             source={{
-              uri: "https://i.pinimg.com/564x/5d/18/b2/5d18b25ff369b7916f4fe85d6c76a563.jpg",
+              uri: "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png",
             }}
             alt="profile"
             w={150}
@@ -51,7 +56,7 @@ const ProfileScreen = ({ navigation }) => {
             borderRadius={100}
           />
           <Heading bold fontSize={20} isTruncated my={2} color={Colors.black}>
-            Anh Bảy
+           {/* {email} */}
           </Heading>
           <Text italic fontSize={15} color={Colors.black}>
             ngày thêm 22/12/2022

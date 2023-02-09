@@ -34,7 +34,7 @@ const HomeSearch = () => {
       <Box px={1} rounded="full" position="absolute" top={-13} left={7} bg={Colors.red} _text={{
         color:Colors.white ,fontSize:"11px",
       }} >
-        5
+       
       </Box>
       </Pressable>
     </HStack>

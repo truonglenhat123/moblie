@@ -1,13 +1,9 @@
 import React from "react";
-import { Box, Button, Text, View } from "native-base";
+import { Box, Button, Text, View,Center } from "native-base";
 import { Colors } from "../Color";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-// import { FlatList } from "react-native";
-// import products from "../data/products";
-// import { Image } from "react-native";
-// import { Ionicons } from "@expo/vector-icons";
-// import CartEmpty from "../Components/CartEmpty";
+
 import { useState } from "react";
 
 const CartScreen = ({ route, navigation }) => {

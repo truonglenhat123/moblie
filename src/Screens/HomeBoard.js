@@ -28,7 +28,7 @@ const HomeBoard = ({ navigation }) => {
       .then((resJson) => {
         setData(resJson);
         // console.log("====================================");
-        console.log(resJson[0]);
+        // console.log(resJson[0]);
         // console.log("====================================");
       })
       .catch((error) => {});
@@ -110,8 +110,9 @@ const HomeBoard = ({ navigation }) => {
         </View>
 
         {data &&
-          data.map((product) => (
+          data.map((product,index) => (
             <View
+            key={index}
               style={{
                 padding: 16,
               }}
