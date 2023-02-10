@@ -4,19 +4,15 @@ import { Box, Button, Heading, Image, VStack, Input,Text } from "native-base";
 import { Colors } from "../Color";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { useEffect } from "react";
-import {AsyncStorage} from 'react-native';
+
 
 
 
 const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("kieubob123@gmail.com");
-  const [password, setPassword] = useState("Truong@2022");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [checkValidEmail,setCheckValidEmail] = useState(false);
-  // useEffect(() => {
-  //   setEmail("");
-  //   setPassword("");
-  // }, []);
+
   const handleCheckEmail = text => {
     let re = /\S+@\S+\.\S+/;
     let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
@@ -49,11 +45,7 @@ const Login = ({ navigation }) => {
          alert("Đăng nhập thất bại");
           return;
         }
-        console.log('aa',resJson.token);
-        AsyncStorage.setItem('token', resJson.token)
-        console.log('aaaaaaaa',AsyncStorage.getItem('token'));
-        // AsyncStorage.setItem('id', resJson.id)
-        AsyncStorage.setItem('email', resJson.email)
+        
         navigation.navigate("HomeBoard");
       })
       .catch((error) => {

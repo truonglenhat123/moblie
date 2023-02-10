@@ -36,10 +36,7 @@ const ProfileScreen = ({ navigation }) => {
       type: "password",
     },
   ];
-  const [email,setEmail] = useState(AsyncStorage.getItem('email'))
-  useEffect(()=>{
-      console.log(email);
-  },[email])
+  
 
   return (
     <ScrollView>
@@ -56,7 +53,7 @@ const ProfileScreen = ({ navigation }) => {
             borderRadius={100}
           />
           <Heading bold fontSize={20} isTruncated my={2} color={Colors.black}>
-           {/* {email} */}
+          email
           </Heading>
           <Text italic fontSize={15} color={Colors.black}>
             ngày thêm 22/12/2022
