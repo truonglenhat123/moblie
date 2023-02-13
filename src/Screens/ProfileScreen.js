@@ -36,7 +36,7 @@ const ProfileScreen = ({ navigation }) => {
       type: "password",
     },
   ];
-  
+  hjbjhjhuhjhjkkjk
 
   return (
     <ScrollView>
